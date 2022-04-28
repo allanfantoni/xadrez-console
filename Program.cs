@@ -4,19 +4,15 @@ using xadrez_console;
 
 try
 {
-    //Tabuleiro tab = new Tabuleiro(8, 8);
+    Tabuleiro tab = new Tabuleiro(8, 8);
 
-    //tab.ColocarPeca(new Torre(Cor.Preta, tab), new Posicao(0, 0));
-    //tab.ColocarPeca(new Torre(Cor.Preta, tab), new Posicao(1, 3));
-    //tab.ColocarPeca(new Rei(Cor.Preta, tab), new Posicao(0, 2));
+    tab.ColocarPeca(new Torre(Cor.Amarela, tab), new Posicao(0, 0));
+    tab.ColocarPeca(new Torre(Cor.Amarela, tab), new Posicao(1, 3));
+    tab.ColocarPeca(new Rei(Cor.Amarela, tab), new Posicao(0, 2));
 
-    //Tela.ImprimirTabuleiro(tab);
+    tab.ColocarPeca(new Torre(Cor.Branca, tab), new Posicao(3, 5));
 
-    PosicaoXadrez pos = new PosicaoXadrez('a', 1);
-
-    Console.WriteLine(pos);
-    Console.WriteLine(pos.ToPosicao());
-
+    Tela.ImprimirTabuleiro(tab);
 }
 catch (TabuleiroException ex)
 {
