@@ -17,7 +17,7 @@ namespace xadrez
         private bool ExisteInimigo(Posicao pos)
         {
             Peca p = Tabuleiro.Peca(pos);
-            return p != null || p.Cor != Cor;
+            return p != null && p.Cor != Cor;
         }
 
         private bool Livre(Posicao pos)
