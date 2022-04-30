@@ -1,18 +1,15 @@
-﻿using tabuleiro;
+﻿using Tabuleiro;
 
-namespace xadrez
+namespace Xadrez
 {
     public class Dama : Peca
     {
-        public Dama(Cor cor, Tabuleiro tabuleiro) : base(cor, tabuleiro)
+        public Dama(Cor cor, Tabuleiro.Tabuleiro tabuleiro) : base(cor, tabuleiro)
         {
 
         }
 
-        public override string? ToString()
-        {
-            return "D";
-        }
+        public override string? ToString() => "D";
 
         private bool PodeMover(Posicao pos)
         {
@@ -23,7 +20,7 @@ namespace xadrez
         public override bool[,] MovimentosPossiveis()
         {
             bool[,] mat = new bool[Tabuleiro.Linhas, Tabuleiro.Colunas];
-            Posicao pos = new Posicao(0, 0);
+            Posicao pos = new(0, 0);
 
             // leste
             pos.DefinirValores(Posicao.Linha, Posicao.Coluna + 1);
@@ -33,11 +30,9 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
-                pos.Coluna = pos.Coluna + 1;
+                pos.Coluna++;
             }
 
             // oeste
@@ -48,11 +43,9 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
-                pos.Coluna = pos.Coluna - 1;
+                pos.Coluna--;
             }
 
             // norte
@@ -63,11 +56,9 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
-                pos.Linha = pos.Linha - 1;
+                pos.Linha--;
             }
 
             // sul
@@ -78,11 +69,9 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
-                pos.Linha = pos.Linha + 1;
+                pos.Linha++;
             }
 
             // noroeste
@@ -93,9 +82,7 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
                 pos.DefinirValores(pos.Linha - 1, pos.Coluna - 1);
             }
@@ -108,9 +95,7 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
                 pos.DefinirValores(pos.Linha - 1, pos.Coluna + 1);
             }
@@ -123,9 +108,7 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
                 pos.DefinirValores(pos.Linha + 1, pos.Coluna + 1);
             }
@@ -138,9 +121,7 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
                 pos.DefinirValores(pos.Linha + 1, pos.Coluna - 1);
             }

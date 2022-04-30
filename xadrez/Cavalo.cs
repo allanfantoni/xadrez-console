@@ -1,18 +1,15 @@
-﻿using tabuleiro;
+﻿using Tabuleiro;
 
-namespace xadrez
+namespace Xadrez
 {
     public class Cavalo : Peca
     {
-        public Cavalo(Cor cor, Tabuleiro tabuleiro) : base(cor, tabuleiro)
+        public Cavalo(Cor cor, Tabuleiro.Tabuleiro tabuleiro) : base(cor, tabuleiro)
         {
 
         }
 
-        public override string? ToString()
-        {
-            return "C";
-        }
+        public override string? ToString() => "C";
 
         private bool PodeMover(Posicao pos)
         {
@@ -23,63 +20,47 @@ namespace xadrez
         public override bool[,] MovimentosPossiveis()
         {
             bool[,] mat = new bool[Tabuleiro.Linhas, Tabuleiro.Colunas];
-            Posicao pos = new Posicao(0, 0);
+            Posicao pos = new(0, 0);
 
             pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna - 2);
 
             if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
-            {
                 mat[pos.Linha, pos.Coluna] = true;
-            }
 
             pos.DefinirValores(Posicao.Linha - 2, Posicao.Coluna - 1);
 
             if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
-            {
                 mat[pos.Linha, pos.Coluna] = true;
-            }
 
             pos.DefinirValores(Posicao.Linha - 2, Posicao.Coluna + 1);
 
             if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
-            {
                 mat[pos.Linha, pos.Coluna] = true;
-            }
 
             pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 2);
 
             if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
-            {
                 mat[pos.Linha, pos.Coluna] = true;
-            }
             
             pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 2);
 
             if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
-            {
                 mat[pos.Linha, pos.Coluna] = true;
-            }
 
             pos.DefinirValores(Posicao.Linha + 2, Posicao.Coluna + 1);
 
             if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
-            {
                 mat[pos.Linha, pos.Coluna] = true;
-            }
 
             pos.DefinirValores(Posicao.Linha + 2, Posicao.Coluna - 1);
 
             if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
-            {
                 mat[pos.Linha, pos.Coluna] = true;
-            }
 
             pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 2);
 
             if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
-            {
                 mat[pos.Linha, pos.Coluna] = true;
-            }
 
             return mat;
         }

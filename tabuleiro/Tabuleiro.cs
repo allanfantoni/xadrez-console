@@ -1,4 +1,4 @@
-﻿namespace tabuleiro
+﻿namespace Tabuleiro
 {
     public class Tabuleiro
     {
@@ -13,15 +13,9 @@
             Pecas = new Peca[linhas, colunas];
         }
 
-        public Peca Peca(int linha, int coluna)
-        {
-            return Pecas[linha, coluna];
-        }
+        public Peca Peca(int linha, int coluna) => Pecas[linha, coluna];
 
-        public Peca Peca(Posicao pos)
-        {
-            return Pecas[pos.Linha, pos.Coluna];
-        }
+        public Peca Peca(Posicao pos) => Pecas[pos.Linha, pos.Coluna];
 
         public bool ExistePeca(Posicao pos)
         {
@@ -32,9 +26,7 @@
         public void ColocarPeca(Peca p, Posicao pos)
         {
             if (ExistePeca(pos))
-            {
                 throw new TabuleiroException("Já existe uma peça nessa posição!");
-            }
 
             Pecas[pos.Linha, pos.Coluna] = p;
             p.Posicao = pos;
@@ -43,9 +35,7 @@
         public Peca RetirarPeca(Posicao pos)
         {
             if (Peca(pos) == null)
-            {
                 return null;
-            }
 
             Peca aux = Peca(pos);
             aux.Posicao = null;
@@ -64,9 +54,7 @@
         public void ValidarPosicao(Posicao pos)
         {
             if (!PosicaoValida(pos))
-            {
                 throw new TabuleiroException("Posição inválida!");
-            }
         }
     }
 }

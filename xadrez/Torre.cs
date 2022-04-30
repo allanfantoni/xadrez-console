@@ -1,18 +1,15 @@
-﻿using tabuleiro;
+﻿using Tabuleiro;
 
-namespace xadrez
+namespace Xadrez
 {
     public class Torre : Peca
     {
-        public Torre(Cor cor, Tabuleiro tabuleiro) : base(cor, tabuleiro)
+        public Torre(Cor cor, Tabuleiro.Tabuleiro tabuleiro) : base(cor, tabuleiro)
         {
 
         }
 
-        public override string? ToString()
-        {
-            return "T";
-        }
+        public override string? ToString() => "T";
 
         private bool PodeMover(Posicao pos)
         {
@@ -23,7 +20,7 @@ namespace xadrez
         public override bool[,] MovimentosPossiveis()
         {
             bool[,] mat = new bool[Tabuleiro.Linhas, Tabuleiro.Colunas];
-            Posicao pos = new Posicao(0, 0);
+            Posicao pos = new(0, 0);
 
             // norte
             pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna);
@@ -33,11 +30,9 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
-                pos.Linha = pos.Linha - 1;
+                pos.Linha--;
             }
 
             // sul
@@ -48,11 +43,9 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
-                pos.Linha = pos.Linha + 1;
+                pos.Linha++;
             }
 
             // leste
@@ -63,11 +56,9 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
-                pos.Coluna = pos.Coluna + 1;
+                pos.Coluna++;
             }
 
             // oeste
@@ -78,11 +69,9 @@ namespace xadrez
                 mat[pos.Linha, pos.Coluna] = true;
 
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor)
-                {
                     break;
-                }
 
-                pos.Coluna = pos.Coluna - 1;
+                pos.Coluna--;
             }
 
             return mat;

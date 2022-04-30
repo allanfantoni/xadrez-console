@@ -1,21 +1,22 @@
-﻿using tabuleiro;
-using xadrez;
+﻿using Tabuleiro;
+using Xadrez;
 
 namespace xadrez_console
 {
     public class Tela
     {
-        public static void ImprimirTabuleiro(Tabuleiro tab)
+        public static void ImprimirTabuleiro(Tabuleiro.Tabuleiro tab)
         {
             for (int i = 0; i < tab.Linhas; i++)
             {
                 Console.Write(8 - i + " ");
+                
                 for (int j = 0; j < tab.Colunas; j++)
-                {
                     ImprimirPeca(tab.Peca(i, j));
-                }
+                
                 Console.WriteLine();
             }
+
             Console.WriteLine("  a b c d e f g h");
         }
 
@@ -32,9 +33,7 @@ namespace xadrez_console
                 Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
 
                 if (partida.Xeque)
-                {
                     Console.WriteLine("XEQUE!");
-                }
             }
             else
             {
@@ -62,14 +61,12 @@ namespace xadrez_console
             Console.Write("[");
 
             foreach (Peca peca in pecas)
-            {
                 Console.Write(peca + " ");
-            }
 
             Console.Write("]");
         }
 
-        public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
+        public static void ImprimirTabuleiro(Tabuleiro.Tabuleiro tab, bool[,] posicoesPossiveis)
         {
             ConsoleColor fundoOriginal = Console.BackgroundColor;
             ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
@@ -79,20 +76,13 @@ namespace xadrez_console
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if (posicoesPossiveis[i, j])
-                    {
-                        Console.BackgroundColor = fundoAlterado;
-                    }
-                    else
-                    {
-                        Console.BackgroundColor = fundoOriginal;
-                    }
-
+                    Console.BackgroundColor = posicoesPossiveis[i, j] ? fundoAlterado : fundoOriginal;
                     ImprimirPeca(tab.Peca(i, j));
                     Console.BackgroundColor = fundoOriginal;
                 }
                 Console.WriteLine();
             }
+
             Console.WriteLine("  a b c d e f g h");
             Console.BackgroundColor = fundoOriginal;
         }
@@ -108,15 +98,11 @@ namespace xadrez_console
         public static void ImprimirPeca(Peca peca)
         {
             if (peca == null)
-            {
                 Console.Write("- ");
-            }
             else
             {
                 if (peca.Cor == Cor.Branca)
-                {
                     Console.Write(peca);
-                }
                 else
                 {
                     ConsoleColor aux = Console.ForegroundColor;
@@ -124,6 +110,7 @@ namespace xadrez_console
                     Console.Write(peca);
                     Console.ForegroundColor = aux;
                 }
+
                 Console.Write(" ");
             }
         }

@@ -1,5 +1,5 @@
-﻿using tabuleiro;
-using xadrez;
+﻿using Tabuleiro;
+using Xadrez;
 using xadrez_console;
 
 try
