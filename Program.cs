@@ -41,6 +41,9 @@ try
             Console.WriteLine(ex.Message);
         }
     }
+
+    Console.Clear();
+    Tela.ImprimirPartida(partida);
 }
 catch (TabuleiroException ex)
 {
