@@ -1,4 +1,4 @@
-Xadrez console app, created by Nelio Alves (@acenelio).
+Xadrez console app, created by Nelio Alves ([@acenelio](https://github.com/acenelio)).
 
 This is an example of a chess game made as a console app and C# language.
 
